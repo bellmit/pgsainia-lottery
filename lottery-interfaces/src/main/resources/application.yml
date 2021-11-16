@@ -1,2 +1,26 @@
 server:
   port: 80
+
+spring:
+  datasource:
+    username: root
+    password: mysql
+    url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  config-location: classpath:/mybatis/config/mybatis-config.xml
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+
+# dubbo 广播模式配置
+dubbo:
+  application:
+    name: pgsainia-lottery
+    version: 1.0.0
+  registry:
+    address: N/A #multicast://224.5.6.7:1234
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: com.pgsainia.lottery.rpc
