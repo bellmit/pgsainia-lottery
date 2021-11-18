@@ -26,6 +26,6 @@ public class DrawConfig {
     @PostConstruct
     public void init() {
         drawAlgorithmMap.put(1, defaultRateRandomDrawAlgorithm);
-        drawAlgorithmMap.put(1, singleRateRandomDrawAlgorithm);
+        drawAlgorithmMap.put(2, singleRateRandomDrawAlgorithm);
     }
 }

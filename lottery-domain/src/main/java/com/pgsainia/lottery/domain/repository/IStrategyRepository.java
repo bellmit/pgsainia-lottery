@@ -10,7 +10,7 @@ import com.pgsainia.lottery.infrastructure.pojo.Award;
  */
 public interface IStrategyRepository {
     /**
-     * 查询 strategyRick\h
+     * 查询 strategyRich
      *
      * @param strategyId
      * @return
