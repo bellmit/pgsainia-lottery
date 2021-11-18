@@ -1,42 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pgsainia.lottery.infrastructure.dao.IActivityDao">
-    <resultMap id="activityMap" type="com.pgsainia.lottery.infrastructure.pojo.Activity">
-        <id column="id" property="id"></id>
-        <result column="activity_id" property="activityId"></result>
-        <result column="activity_name" property="activityName"></result>
-        <result column="activity_desc" property="activityDesc"></result>
-        <result column="begin_date_time" property="beginDateTime"></result>
-        <result column="end_date_time" property="endDateTime"></result>
-        <result column="stock_count" property="stockCount"></result>
-        <result column="take_count" property="takeCount"></result>
-        <result column="state" property="state"></result>
-        <result column="creator" property="creator"></result>
-        <result column="create_time" property="createTime"></result>
-        <result column="update_time" property="updateTime"></result>
-    </resultMap>
-
     <insert id="insert" parameterType="com.pgsainia.lottery.infrastructure.pojo.Activity">
         insert into activity
-                (activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
-                 stock_count, take_count, state, creator, create_time, update_time)
+                (activityId, activityName, activityDesc, beginDateTime, endDateTime,
+                 stockCount, takeCount, state, creator, createTime, updateTime)
         values (#{activityId}, #{activityName}, #{activityDesc}, #{beginDateTime}, #{endDateTime},
                 #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now())
     </insert>
 
-    <select id="queryActivityById" parameterType="java.lang.Long" resultMap="activityMap">
-        select activity_id,
-               activity_name,
-               activity_desc,
-               begin_date_time,
-               end_date_time,
-               stock_count,
-               take_count,
+    <select id="queryActivityById" parameterType="java.lang.Long"
+            resultType="com.pgsainia.lottery.infrastructure.pojo.Activity">
+        select activityId,
+               activityName,
+               activityDesc,
+               beginDateTime,
+               endDateTime,
+               stockCount,
+               takeCount,
                state,
                creator,
-               create_time,
-               update_time
+               createTime,
+               updateTime
         from activity
-        where activity_id = #{activityId}
+        where activityId = #{activityId}
     </select>
 </mapper>
