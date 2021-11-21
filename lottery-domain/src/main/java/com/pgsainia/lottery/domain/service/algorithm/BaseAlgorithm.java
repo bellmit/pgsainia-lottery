@@ -3,6 +3,7 @@ package com.pgsainia.lottery.domain.service.algorithm;
 import com.pgsainia.lottery.domain.model.vo.AwardRateInfo;
 
 import java.math.BigDecimal;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,7 +21,7 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm {
     private final int HASH_INCREMENT = 0x61c88647;
 
     /**
-     * 数组初始化长度
+     * 数组初始化长度 128，保证数据填充时不发生碰撞的最小化初始值
      */
     private final int RATE_TUPLE_LENGTH = 128;
 
@@ -67,5 +68,15 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm {
     protected int hashIndex(int value) {
         int hashcode = value * HASH_INCREMENT + HASH_INCREMENT;
         return hashcode * (RATE_TUPLE_LENGTH - 1);
+    }
+
+    /**
+     * 生成百位随机抽奖码
+     *
+     * @param bound
+     * @return
+     */
+    protected int generateSecureRandomIntCode(int bound) {
+        return new SecureRandom().nextInt(100) + 1;
     }
 }

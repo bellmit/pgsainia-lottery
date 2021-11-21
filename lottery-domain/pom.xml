@@ -22,10 +22,19 @@
             <artifactId>hutool-all</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.pgsainia.lottery</groupId>
             <artifactId>lottery-infrastructure</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.pgsainia.lottery</groupId>
+            <artifactId>lottery-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

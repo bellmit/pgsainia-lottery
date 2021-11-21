@@ -3,6 +3,8 @@ package com.pgsainia.lottery.domain.repository;
 import com.pgsainia.lottery.domain.model.aggregates.StrategyRich;
 import com.pgsainia.lottery.infrastructure.pojo.Award;
 
+import java.util.List;
+
 /**
  * @author nifujia
  * @description
@@ -24,4 +26,21 @@ public interface IStrategyRepository {
      * @return
      */
     Award queryAwardInfo(String awardId);
+
+    /**
+     * 查询没有库存的策略奖品 Id
+     *
+     * @param strategyId
+     * @return
+     */
+    List<String> listNoStockStrategyAwardList(Long strategyId);
+
+    /**
+     * 扣减库存
+     *
+     * @param strategyId
+     * @param awardId
+     * @return
+     */
+    boolean deductStock(Long strategyId, String awardId);
 }

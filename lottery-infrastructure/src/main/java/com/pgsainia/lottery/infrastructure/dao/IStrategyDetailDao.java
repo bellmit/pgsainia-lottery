@@ -17,4 +17,18 @@ public interface IStrategyDetailDao {
      * @return
      */
     List<StrategyDetail> listStrategyDetail(Long strategyId);
+
+    /**
+     * 查询无库存策略奖品 Id
+     * @param strategyId
+     * @return
+     */
+    List<String> listNoStockStrategyAwardList(Long strategyId);
+
+    /**
+     * 扣减库存
+     * @param strategyDetail
+     * @return
+     */
+    int deductStock(StrategyDetail strategyDetail);
 }

@@ -8,7 +8,13 @@ import java.math.BigDecimal;
  * @date 2021/11/17
  */
 public class AwardRateInfo {
+    /**
+     *  奖品 Id
+     */
     private String awardId;
+    /**
+     * 中奖概率
+     */
     private BigDecimal awardRate;
 
     public AwardRateInfo() {

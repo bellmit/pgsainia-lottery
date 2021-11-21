@@ -13,4 +13,20 @@
         FROM strategy_detail
         WHERE strategyId = #{strategyId}
     </select>
+
+    <select id="listNoStockStrategyAwardList" parameterType="java.lang.Long" resultType="java.lang.String">
+        SELECT awardId
+        FROM `strategy_detail`
+        WHERE strategyId = #{strategyId}
+          AND awardSurplusCount = 0
+    </select>
+
+    <update id="deductStock" parameterType="com.pgsainia.lottery.infrastructure.pojo.StrategyDetail">
+        UPDATE
+                `strategy_detail`
+        SET awardSurplusCount = awardSurplusCount - 1
+        WHERE strategyId = #{strategyId}
+          AND awardId = #{awardId}
+          AND awardSurplusCount > 0
+    </update>
 </mapper>

@@ -20,10 +20,10 @@ public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm {
         assert rateTuple != null;
 
         // 随机索引
-        int randomValue = new SecureRandom().nextInt(100) + 1;
+        int randomValue = super.generateSecureRandomIntCode(100);
         int index = super.hashIndex(randomValue);
         String awardId = rateTuple[index];
-        if (excludeAwardIds.contains(awardId)) return "未中奖";
+        if (excludeAwardIds.contains(awardId)) return null;
         return awardId;
     }
 }

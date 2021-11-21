@@ -14,8 +14,8 @@ import java.util.List;
  * @description 必中策略抽奖，排除已经中奖的概率，重新计算抽奖概率
  * @date 2021/11/18
  */
-@Component("defaultRateRandomDrawAlgorithm")
-public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
+@Component("entiretyRateRandomDrawAlgorithm")
+public class EntiretyRateRandomDrawAlgorithm extends BaseAlgorithm {
     @Override
     public String randomDraw(Long strategyId, List<String> excludeAwardIds) {
 
@@ -32,14 +32,14 @@ public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
         }
 
         // 前置判断
-        if (differenceAwardRateList.size() == 0) return "";
+        if (differenceAwardRateList.size() == 0) return null;
         if (differenceAwardRateList.size() == 1) return differenceAwardRateList.get(0).getAwardId();
 
         // 获取随机概率值
-        int randomValue = new SecureRandom().nextInt(100) + 1;
+        int randomValue = super.generateSecureRandomIntCode(100);
 
         // 循环获取奖品
-        String awardId = "";
+        String awardId = null;
         int cursorValue = 0;
         for (AwardRateInfo awardRateInfo : differenceAwardRateList) {
             int rateValue = awardRateInfo.getAwardRate().divide(differenceDenominator, 1, BigDecimal.ROUND_UP)
