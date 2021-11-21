@@ -25,6 +25,11 @@ public class StrategyDetail {
      * 奖品数量
      */
     private Integer awardCount;
+
+    /**
+     * 奖品剩余库存
+     */
+    private Integer awardSurplusCount;
     /**
      * 中奖概率
      */
@@ -68,6 +73,14 @@ public class StrategyDetail {
 
     public void setAwardCount(Integer awardCount) {
         this.awardCount = awardCount;
+    }
+
+    public Integer getAwardSurplusCount() {
+        return awardSurplusCount;
+    }
+
+    public void setAwardSurplusCount(Integer awardSurplusCount) {
+        this.awardSurplusCount = awardSurplusCount;
     }
 
     public BigDecimal getAwardRate() {
