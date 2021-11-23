@@ -4,11 +4,11 @@ import com.pgsainia.lottery.common.Constants;
 import com.pgsainia.lottery.domain.strategy.model.aggregates.StrategyRich;
 import com.pgsainia.lottery.domain.strategy.model.req.DrawReq;
 import com.pgsainia.lottery.domain.strategy.model.res.DrawResult;
+import com.pgsainia.lottery.domain.strategy.model.vo.AwardBriefVO;
 import com.pgsainia.lottery.domain.strategy.model.vo.AwardRateInfo;
 import com.pgsainia.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import com.pgsainia.lottery.domain.strategy.model.vo.StrategyDetailBriefVO;
 import com.pgsainia.lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
-import com.pgsainia.lottery.infrastructure.pojo.Award;
-import com.pgsainia.lottery.infrastructure.pojo.StrategyDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,7 +65,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
             logger.info("执行策略抽奖完成「未中奖」，用户 Id：{}，策略 Id：{}", uId, strategyId);
             return new DrawResult(uId, strategyId, Constants.DrawState.FAIL.getCode());
         }
-        Award award = this.queryAwardInfoByAwardId(awardId);
+        AwardBriefVO award = this.queryAwardInfoByAwardId(awardId);
         DrawAwardInfo drawAwardInfo = new DrawAwardInfo(awardId, award.getAwardType(), award.getAwardContent(), award.getAwardName());
         logger.info("执行策略抽奖完成「已中奖」，用户 Id：{}，策略 Id：{}，奖品 Id：{}，奖品名称：{}",
                 uId, strategyId, drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName());
@@ -89,7 +89,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
      * @param strategyMode
      * @param strategyDetailList
      */
-    public void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetail> strategyDetailList) {
+    public void checkAndInitRateData(Long strategyId, Integer strategyMode, List<StrategyDetailBriefVO> strategyDetailList) {
         // 非单项概率不用存入缓存
         if (!Constants.StrategyMode.SINGLE.getCode().equals(strategyMode)) return;
         IDrawAlgorithm drawAlgorithm = drawAlgorithmGroup.get(strategyMode);
@@ -98,7 +98,7 @@ public abstract class AbstractDrawBase extends DrawStrategySupport implements ID
         if (existRateTuple) return;
         // 解析并初始化中奖概率到散列表
         List<AwardRateInfo> awardRateInfoList = new ArrayList<>();
-        for (StrategyDetail strategyDetail : strategyDetailList) {
+        for (StrategyDetailBriefVO strategyDetail : strategyDetailList) {
             awardRateInfoList.add(new AwardRateInfo(strategyDetail.getAwardId(), strategyDetail.getAwardRate()));
         }
         drawAlgorithm.initRateTuple(strategyId, awardRateInfoList);

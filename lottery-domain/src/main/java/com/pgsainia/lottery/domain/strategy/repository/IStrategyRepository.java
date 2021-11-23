@@ -1,7 +1,7 @@
 package com.pgsainia.lottery.domain.strategy.repository;
 
 import com.pgsainia.lottery.domain.strategy.model.aggregates.StrategyRich;
-import com.pgsainia.lottery.infrastructure.pojo.Award;
+import com.pgsainia.lottery.domain.strategy.model.vo.AwardBriefVO;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public interface IStrategyRepository {
      * @param awardId
      * @return
      */
-    Award queryAwardInfo(String awardId);
+    AwardBriefVO queryAwardInfo(String awardId);
 
     /**
      * 查询没有库存的策略奖品 Id

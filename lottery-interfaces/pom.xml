@@ -53,7 +53,7 @@
         </dependency>
         <dependency>
             <groupId>com.pgsainia.lottery</groupId>
-            <artifactId>lottery-domain</artifactId>
+            <artifactId>lottery-infrastructure</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

@@ -1,4 +1,4 @@
-package com.pgsainia.lottery.domain.award.repository.impl;
+package com.pgsainia.lottery.infrastructure.repository;
 
 import com.pgsainia.lottery.domain.award.repository.IAwardRepository;
 import org.springframework.stereotype.Component;

@@ -1,8 +1,8 @@
 package com.pgsainia.lottery.domain.strategy.service.draw;
 
 import com.pgsainia.lottery.domain.strategy.model.aggregates.StrategyRich;
+import com.pgsainia.lottery.domain.strategy.model.vo.AwardBriefVO;
 import com.pgsainia.lottery.domain.strategy.repository.IStrategyRepository;
-import com.pgsainia.lottery.infrastructure.pojo.Award;
 
 import javax.annotation.Resource;
 
@@ -32,7 +32,7 @@ public class DrawStrategySupport extends DrawConfig {
      * @param awardId
      * @return
      */
-    protected Award queryAwardInfoByAwardId(String awardId) {
+    protected AwardBriefVO queryAwardInfoByAwardId(String awardId) {
         return strategyRepository.queryAwardInfo(awardId);
     }
 
