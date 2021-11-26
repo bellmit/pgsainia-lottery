@@ -22,4 +22,19 @@
         FROM award
         WHERE award_id = #{awardId}
     </select>
+
+    <insert id="insertBatch" parameterType="com.pgsainia.lottery.infrastructure.pojo.Award">
+        insert into award(award_id, award_type, award_name, award_content, create_time, update_time)
+        values
+        <foreach collection="awardList" index="index" item="award" separator=",">
+            (
+            #{award.awardId},
+            #{award.awardType},
+            #{award.awardName},
+            #{award.awardContent},
+            now(),
+            now()
+            )
+        </foreach>
+    </insert>
 </mapper>

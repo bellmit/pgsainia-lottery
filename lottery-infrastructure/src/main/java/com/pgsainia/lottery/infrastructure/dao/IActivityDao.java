@@ -1,5 +1,6 @@
 package com.pgsainia.lottery.infrastructure.dao;
 
+import com.pgsainia.lottery.domain.activity.model.vo.AlterStateVO;
 import com.pgsainia.lottery.infrastructure.pojo.Activity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -25,4 +26,11 @@ public interface IActivityDao {
      * @return
      */
     Activity queryActivityById(Long activityId);
+
+    /**
+     * 变更活动状态
+     * @param alterState
+     * @return
+     */
+    int alterState(AlterStateVO alterState);
 }

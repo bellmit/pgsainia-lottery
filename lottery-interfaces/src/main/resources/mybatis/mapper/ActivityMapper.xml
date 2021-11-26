@@ -39,4 +39,9 @@
         from activity
         where activity_id = #{activityId}
     </select>
+
+    <update id="alterState" parameterType="com.pgsainia.lottery.domain.activity.model.vo.AlterStateVO">
+        update activity set state = #{afterState}
+        WHERE activity_id = #{activityId} AND state = #{beforeState}
+    </update>
 </mapper>

@@ -3,6 +3,8 @@ package com.pgsainia.lottery.infrastructure.dao;
 import com.pgsainia.lottery.infrastructure.pojo.Award;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @author nifujia
  * @description
@@ -17,4 +19,11 @@ public interface IAwardDao {
      * @return
      */
     Award queryAwardInfo(String awardId);
+
+    /**
+     * 批量插入奖品信息
+     *
+     * @param awardList
+     */
+    void insertBatch(List<Award> awardList);
 }
