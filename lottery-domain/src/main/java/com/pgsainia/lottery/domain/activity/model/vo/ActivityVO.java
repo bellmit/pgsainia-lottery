@@ -11,7 +11,7 @@ public class ActivityVO {
     /**
      * 活动 id
      */
-    private String activityId;
+    private Long activityId;
     /**
      * 活动名称
      */
@@ -45,11 +45,11 @@ public class ActivityVO {
      */
     private String creator;
 
-    public String getActivityId() {
+    public Long getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(String activityId) {
+    public void setActivityId(Long activityId) {
         this.activityId = activityId;
     }
 

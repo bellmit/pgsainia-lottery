@@ -41,7 +41,7 @@
     </select>
 
     <update id="alterState" parameterType="com.pgsainia.lottery.domain.activity.model.vo.AlterStateVO">
-        update activity set state = #{afterState}
+        update activity set state = #{afterState}, update_time = now()
         WHERE activity_id = #{activityId} AND state = #{beforeState}
     </update>
 </mapper>

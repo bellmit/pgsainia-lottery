@@ -21,6 +21,17 @@ public class Result implements Serializable {
     }
 
     /**
+     * 构建返回结果
+     *
+     * @param responseCode
+     * @param info
+     * @return
+     */
+    public static Result buildResult(Constants.ResponseCode responseCode, String info) {
+        return new Result(responseCode.getCode(), info);
+    }
+
+    /**
      * 返回成功
      *
      * @return

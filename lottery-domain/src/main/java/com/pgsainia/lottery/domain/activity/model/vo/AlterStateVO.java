@@ -9,7 +9,7 @@ public class AlterStateVO {
     /**
      * 活动 id
      */
-    private String activityId;
+    private Long activityId;
     /**
      * 变更前状态
      */
@@ -22,17 +22,17 @@ public class AlterStateVO {
     public AlterStateVO() {
     }
 
-    public AlterStateVO(String activityId, Integer beforeState, Integer afterState) {
+    public AlterStateVO(Long activityId, Integer beforeState, Integer afterState) {
         this.activityId = activityId;
         this.beforeState = beforeState;
         this.afterState = afterState;
     }
 
-    public String getActivityId() {
+    public Long getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(String activityId) {
+    public void setActivityId(Long activityId) {
         this.activityId = activityId;
     }
 
